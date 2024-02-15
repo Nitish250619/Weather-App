@@ -3,4 +3,22 @@
     height: 80vh;
     margin: 50px auto;
     background-color: rgba(0, 0, 0, 0.73);
+    display: flex;
 }
+
+.currentLocation{
+    height: 100%;
+    width: 60%;
+    background-image: url("./Assets/city.jpg");
+    background-size: cover;
+    background-position: top left;
+}
+
+.forCast{
+    height: 100%;
+    width: 40%;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)),url("./Assets/background1.jpg");
+    background-size: cover;
+    background-position: center;     
+}
+

@@ -34,15 +34,22 @@ module.exports = {
           },
         ],
       },
+      // {
+      //   test: /\.(png|jpg|gif|svg)$/i,
+      //   use: ['url-loader', 'file-loader'],
+      //   options:{
+      //       name: '[name].[hash].[ext]',
+      //   }
+      // },
+
       {
-        test: /\.(png|jpg|gif|svg)$/i,
-        loader: 'url-loader',
-        options:{
-            limit:8192,
-            name: '[name].[hash].[ext]',
-            outputpath:'images',
-        }
-      },
+        test: /\.(jpg|png|svg|gif)$/,
+        type: 'asset/resource',
+        generator: {
+          // adding a hash to the file
+          filename: 'images/static/[name].[hash][ext]',
+        },
+  },
     ],
   },
   resolve: {
