@@ -69,12 +69,16 @@ const ForCast = () => {
   return (
     <div className={styles.container}>
       <div className={styles.firsthalf}>
+        <div className={styles.weathercompo}>
         <ReactAnimatedWeather
           icon={icon}
           color="#FFFFFF"
           size={104}
           animate={true}
+          
         />
+        </div>
+        
         <h1>{weathername}</h1>
         <hr />
         <div className={styles.searchbox}>
@@ -122,4 +126,4 @@ const ForCast = () => {
 
 export default ForCast;
 
-// {`${temperature} °C`}
+
