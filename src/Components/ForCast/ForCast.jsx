@@ -12,6 +12,7 @@ const ForCast = () => {
   const [temperature, setTemperature] = useState("");
   const [humidity, setHumidity] = useState("");
   const [wind, setWind] = useState("");
+  const [country, setCountry] = useState("");
 
   const searchCity = async (city) => {
     const res = await axios.get(
@@ -25,6 +26,7 @@ const ForCast = () => {
     setWeathername(data.weather[0].main);
     console.log(data);
     setWind(data.wind);
+    setCountry(data.sys.country);
     setTemperature(data.main.temp);
     setHumidity(data.main.humidity);
     switch (data.weather[0].main) {
@@ -69,37 +71,49 @@ const ForCast = () => {
       <div className={styles.firsthalf}>
         <ReactAnimatedWeather
           icon={icon}
-          color="#FFD700"
-          size={64}
+          color="#FFFFFF"
+          size={104}
           animate={true}
         />
-        <h4>{weathername}</h4>
-        <hr/>
-        <input
-          className={styles.searchbar}
-          placeholder="Search any city"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <span className={styles.imgbox}>
-          {" "}
-          <img
-            onClick={searchCity}
-            src="https://images.avishkaar.cc/workflow/newhp/search-white.png"
+        <h1>{weathername}</h1>
+        <hr />
+        <div className={styles.searchbox}>
+          <input
+            className={styles.searchbar}
+            placeholder="Search any city"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
-        </span>
+          <span className={styles.imgbox}>
+            {" "}
+            <img
+              onClick={searchCity}
+              src="https://images.avishkaar.cc/workflow/newhp/search-white.png"
+            />
+          </span>
+        </div>
       </div>
       <div className={styles.secondhalf}>
-        <h3>{weatherr.name}</h3>
-        <hr/>
+        <h3>{`${weatherr.name} , ${country}`}</h3>
+        <hr />
         <ul className={styles.list}>
-          <li>{`${temperature} temp °C`}</li>
-          <hr/>
-          <li>{`${humidity} humidity %`}</li>
-          <hr/>
-          <li>{weatherr.visibility}</li>
-          <hr/>
-          <li>{`Wind: ${wind.speed} m/s, direction ${wind.deg}° `}</li>
+          <li>
+            Temprature <span>{`${Math.round(temperature)} °C (${weathername})`}</span>
+          </li>
+          <hr />
+          <li>
+            {" "}
+            Humidity <span>{`${humidity} %`}</span>{" "}
+          </li>
+          <hr />
+          <li>
+            Visibility <span>{`${weatherr.visibility} mi`}</span>{" "}
+          </li>
+          <hr />
+          <li>
+            Wind Speed{" "}
+            <span>{`${wind.speed} Km/h, direction ${wind.deg}° `}</span>{" "}
+          </li>
         </ul>
       </div>
     </div>
@@ -107,3 +121,5 @@ const ForCast = () => {
 };
 
 export default ForCast;
+
+// {`${temperature} °C`}

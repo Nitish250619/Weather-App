@@ -51,7 +51,7 @@ const CurrentLocation = () => {
         <h1 className={styles.city} >{locationdata?.city}</h1>
         <h1 className={styles.country} >{locationdata?.country}</h1>
         <h3 className={styles.time} >
-        <Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Pacific'} />
+        <Clock format={'h:mm:ss A'} ticking={true} timezone={'Asia/Kolkata'} />
         </h3>
         <p className={styles.day} >{formateddate}</p>
         <h1 className={styles.temp} >{locationdata?.temperature}°<span className={styles.celcius} >C</span></h1>
